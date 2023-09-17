@@ -18,9 +18,9 @@ const initialValues = {
 };
 
 const SignUpForm = () => {
-  const handleSubmit = (values, { resetForm }) => {
+  const handleSubmit = (values, formikBag) => {
     console.log(values);
-    resetForm();
+    formikBag.resetForm();
   };
 
   return (

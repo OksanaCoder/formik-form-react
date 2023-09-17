@@ -1,5 +1,6 @@
 import React from "react";
 import { Formik, Form, ErrorMessage } from "formik";
+import PropTypes from "prop-types";
 import { LOGIN_SCHEMA } from "../../../utils/validationSchema";
 import InputField from "../InputField";
 import ButtonWrapper from "../../ButtonWrapper";
@@ -11,9 +12,9 @@ const initialValues = {
 };
 
 const LoginForm = () => {
-  const handleSubmit = (values, { resetForm }) => {
+  const handleSubmit = (values, formikBag) => {
     console.log(values);
-    resetForm();
+    formikBag.resetForm();
   };
 
   return (
@@ -25,13 +26,16 @@ const LoginForm = () => {
       >
         {({ isSubmitting }) => (
           <Form>
-            <InputField type="email" name="email" placeholder="Email" />
-
-            <InputField
-              type="password"
-              name="password"
-              placeholder="Password"
-            />
+            <div>
+              <InputField type="email" name="email" placeholder="Email" />
+            </div>
+            <div>
+              <InputField
+                type="password"
+                name="password"
+                placeholder="Password"
+              />
+            </div>
 
             <div>
               <ButtonWrapper type="submit" disabled={isSubmitting}>

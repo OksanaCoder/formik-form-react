@@ -1,5 +1,5 @@
 import React from "react";
-import { Field } from "formik";
+import { Field, ErrorMessage } from "formik";
 import styles from "./InputRadioWrapper.module.scss";
 
 const InputRadioWrapper = ({ name, value, children, ...options }) => {
@@ -11,6 +11,11 @@ const InputRadioWrapper = ({ name, value, children, ...options }) => {
           <label className={styles.radioBox}>
             <input {...field} type="radio" value={value} {...options} />
             {children}
+            <ErrorMessage
+              name={name}
+              component="div"
+              className={styles.error}
+            />
           </label>
         );
       }}

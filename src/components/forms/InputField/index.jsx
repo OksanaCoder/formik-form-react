@@ -3,19 +3,19 @@ import { Field, ErrorMessage } from "formik";
 import cx from "classnames";
 import styles from "./InputField.module.scss";
 
-const InputField = ({ name, ...options }) => {
+const InputField = ({ name, type, ...options }) => {
   return (
     <Field name={name}>
-      {({ form }) => {
-        const { touched, errors } = form;
+      {({ field, meta }) => {
         return (
-          <>
+          <label className={styles.relativeWrapper}>
             <input
-              type={name}
+              type={type}
+              {...field}
               {...options}
               className={cx(
-                styles.inputStyle,
-                touched[name] && errors[name] ? styles.errorInput : ""
+                styles.inputStyle
+                // touched[name] && errors[name] ? styles.errorInput : ""
               )}
             />
             <ErrorMessage
@@ -23,7 +23,7 @@ const InputField = ({ name, ...options }) => {
               component="div"
               className={styles.error}
             />
-          </>
+          </label>
         );
       }}
     </Field>
