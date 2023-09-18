@@ -17,7 +17,6 @@ const InputField = ({ name, type, ...options }) => {
               className={cx(
                 styles.inputStyle,
                 meta.touched && meta.error ? styles.errorInput : ""
-                // touched[name] && errors[name] ? styles.errorInput : ""
               )}
             />
             <ErrorMessage
