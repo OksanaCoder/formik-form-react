@@ -7,6 +7,7 @@ const InputField = ({ name, type, ...options }) => {
   return (
     <Field name={name}>
       {({ field, meta }) => {
+        console.log(field, meta);
         return (
           <label className={styles.relativeWrapper}>
             <input
@@ -14,7 +15,8 @@ const InputField = ({ name, type, ...options }) => {
               {...field}
               {...options}
               className={cx(
-                styles.inputStyle
+                styles.inputStyle,
+                meta.touched && meta.error ? styles.errorInput : ""
                 // touched[name] && errors[name] ? styles.errorInput : ""
               )}
             />
